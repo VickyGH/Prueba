@@ -1,0 +1,64 @@
+{% extends "structure/base.html" %}
+
+{% block title %}
+Nuevo {{ tipos }}
+{% endblock %}
+
+{% block content %}
+<main>
+    <div class="container-fluid">
+        <h1 class="mt-4">Nuevo {{ tipos }}</h1>
+        <br>
+        <div class="card mb-4">
+        </div>
+        <div class="card mb-4">
+            <div class="card-body">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    {% if form.errors %}
+                    <div class="error pt-4">
+                        <p>{{form.errors}}</p>
+                    </div>
+                    {% endif %}
+                    {% if tipos == "Proveedor" %}
+                    <div class="pt-3">
+                        {{form.name}}
+                    </div>
+                    <div class="pt-3">
+                        {{form.address}}
+                    </div>
+                    {% elif tipos == "Producto" %}
+                    <div class="pt-3">
+                        {{form.code}}
+                    </div>
+                    <div class="pt-3">
+                        {{form.description}}
+                    </div>
+                    <div class="pt-3">
+                        {{form.provider}}
+                    </div>
+                    {% elif tipos == "Ordenes" %}
+                    <div class="pt-3">
+                        {{form.name}}
+                    </div>
+                    <div class="pt-3">
+                        {{form.address}}
+                    </div>
+                    {% else %}
+                    <div class="form-group">
+                        {{ form }}
+                    </div>
+                            {% endif %}
+                    <div class="row pt-5">
+                        <div class="col-sm-12">
+                            <button type="submit" class="btn btn-primary rounded-0 pl-5 pr-5">
+                                Agregar
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

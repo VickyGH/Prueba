@@ -1,0 +1,89 @@
+{% extends "structure/base.html" %}
+
+{% block title %}
+Editar {{ tipos }}
+{% endblock %}
+
+{% block content %}
+<main>
+    <div class="container-fluid">
+        <h1 class="mt-4">Editar {{ tipos }}</h1>
+        <br>
+        <div class="card mb-4">
+        </div>
+        <div class="card mb-4">
+            <div class="card-body">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    {% if tipos == "Proveedor" %}
+                    <div class="pt-3">
+                        {{form.name}}
+                    </div>
+                    <div class="pt-3">
+                        {{form.address}}
+                    </div>
+                    {% elif tipos == "Producto" %}
+                    <div class="pt-3">
+                        {{form.code}}
+                    </div>
+                    <div class="pt-3">
+                        {{form.description}}
+                    </div>
+                    <div class="pt-3">
+                        {{form.provider}}
+                    </div>
+                    {% elif tipos == "Orden" %}
+                    <div class="pt-3">
+                        <h6>Cliente: </h6>
+                        {{form.client}}
+                    </div>
+                    <div class="pt-3">
+                        <h6>Producto: </h6>
+                        {{form.product}}
+                    </div>
+                    <div class="pt-3">
+                        <h6>Fecha de Surtido: </h6>
+                        {{form.assortment}}
+                    </div>
+                    <div class="pt-3">
+                        <h6>Urgente: </h6>
+                        {{form.urgent}}
+                    </div>
+                    <div class="pt-3">
+                        <h6>Tipo: </h6>
+                        {{form.type}}
+                    </div>
+                    <div class="pt-3">
+                        <h6>Almacen: </h6>
+                        {{form.warehouse}}
+                    </div>
+                    <div class="pt-3">
+                        <h6>Referencia: </h6>
+                        {{form.reference}}
+                    </div>
+                    <div class="pt-3">
+                        <h6>Codigo: </h6>
+                        {{form.code}}
+                    </div>
+                    <div class="pt-3">
+                        <h6>Detalle: </h6>
+                        {{form.detail}}
+                    </div>
+                    {% else %}
+                    <div class="form-group">
+                        {{ form }}
+                    </div>
+                    {% endif %}
+                    <div class="row pt-5">
+                        <div class="col-sm-12">
+                            <button type="submit" class="btn btn-primary rounded-0 pl-5 pr-5">
+                                Agregar
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

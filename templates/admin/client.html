@@ -1,0 +1,111 @@
+{% extends "structure/base.html" %}
+
+{% block title %}
+Client
+{% endblock %}
+
+{% block content %}
+<main>
+    <div class="container-fluid">
+        <h1 class="mt-4">Clientes</h1>
+        <br>
+        <div class="card mb-4">
+            <button type="button" class="btn btn-link" data-toggle="modal" data-target="#newclient">
+                <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                Agregar cliente
+            </button>
+            {% if error %}
+            <p>{{error}}</p>
+            {% endif %}
+        </div>
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-table mr-1"></i>
+                Lista de Clientes
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Codigo</th>
+                            <th>Dirección</th>
+                            <th>Tipo</th>
+                            <th>Fecha de Creación</th>
+                            <th>Acciones</th>
+                        </tr>
+                        </thead>
+                        <tfoot>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Codigo</th>
+                            <th>Dirección</th>
+                            <th>Tipo</th>
+                            <th>Fecha de Creación</th>
+                            <th>Acciones</th>
+                        </tr>
+                        </tfoot>
+                        <tbody>
+                        {% for client in client_list %}
+                        <tr>
+                            <td>{{ client.id }}</td>
+                            <td>{{ client.name }}</td>
+                            <td>{{ client.code }}</td>
+                            <td>{{ client.address }}</td>
+                            <td>{{ client.type }}</td>
+                            <td>{{ client.created_at }}</td>
+                            <td>
+                                <a  data-toggle="modal" data-target="#editclient"
+                                    class="btn btn-primary pt-2 pb-2 pl-3 edit-client pr-3 d-inline-block text-white rounded-0"
+                                    data-id="{% url 'client_edit' client.id %}"
+                                    data-name="{{ client.name }}"
+                                    data-code="{{ client.code }}"
+                                    data-address="{{ client.address }}"
+                                    data-type="{{ client.type }}">
+                                    Editar datos
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% include "modal/new_client.html" %}
+{% include "modal/edit_client.html" %}
+
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript">
+$(document).ready(function () {
+
+    $('.edit-client').on('click',function(){
+        let id = $(this).data('id');
+        let name = $(this).data('name');
+        let code = $(this).data('code');
+        //let image = $(this).data('image');
+        let address = $(this).data('address');
+        let type = $(this).data('type');
+
+        //$('input[name=edit_id]').val(id)
+        //document.getElementById('image_txt').innerHTML = image;
+        $("#edit_client").attr("action", id);
+        $('input[name=name]').val(name)
+        $('input[name=code]').val(code)
+        //$('p[id=image_txt]').value(String(image))
+        //$('input[name=image]').val(image)
+        $('input[name=address]').val(address)
+        $('input[name=type]').val(type)
+        //data-image="{{ client.image }}"
+    });
+
+});
+</script>
+{% endblock %}

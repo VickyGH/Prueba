@@ -1,0 +1,57 @@
+{% extends "structure/base.html" %}
+
+{% block title %}
+Detalle {{ tipos }}
+{% endblock %}
+
+{% block content %}
+<main>
+    <div class="container-fluid">
+        <h1 class="mt-4">Detalle {{ tipos }}</h1>
+        <br>
+        <div class="card mb-4">
+        </div>
+        <div class="card mb-4">
+            <div class="card-body">
+                <div class="pt-3 row">
+                    <div class="col-2 my-auto mx-auto"><h6>Cliente: </h6></div>
+                    <div class="col-7 my-auto mx-auto">{{object.client}}</div>
+                </div>
+                <div class="pt-3 row">
+                    <div class="col-2 my-auto mx-auto"><h6>Producto: </h6></div>
+                    <div class="col-7 my-auto mx-auto">{{object.product}}</div>
+                </div>
+                <div class="pt-3 row">
+                    <div class="col-2 my-auto mx-auto"><h6>Fecha de Surtido: </h6></div>
+                    <div class="col-7 my-auto mx-auto">{{object.assortment}}</div>
+                </div>
+                <div class="pt-3 row">
+                    <div class="col-2 my-auto mx-auto"><h6>Urgente: </h6></div>
+                    <div class="col-7 my-auto mx-auto">{{object.urgent}}</div>
+                </div>
+                <div class="pt-3 row">
+                    <div class="col-2 my-auto mx-auto"><h6>Tipo: </h6></div>
+                    <div class="col-7 my-auto mx-auto">{{object.type}}</div>
+                </div>
+                <div class="pt-3 row">
+                    <div class="col-2 my-auto mx-auto"><h6>Almacen: </h6></div>
+                    <div class="col-7 my-auto mx-auto">{{object.warehouse}}</div>
+                </div>
+                <div class="pt-3 row">
+                    <div class="col-2 my-auto mx-auto"><h6>Referencia: </h6></div>
+                    <div class="col-7 my-auto mx-auto">{{object.reference}}</div>
+                </div>
+                <div class="pt-3 row">
+                    <div class="col-2 my-auto mx-auto"><h6>Codigo: </h6></div>
+                    <div class="col-7 my-auto mx-auto">{{object.code}}</div>
+                </div>
+                <div class="pt-3 row">
+                    <div class="col-2 my-auto mx-auto"><h6>Detalle: </h6></div>
+                    <div class="col-7 my-auto mx-auto">{{object.detail}}</div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

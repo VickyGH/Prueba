@@ -1,0 +1,20 @@
+<div class="modal fade" id="delete_data" tabindex="-1" role="dialog" aria-labelledby="delete_dataLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body text-center pt-5 pb-5">
+                <h4>¿Estás seguro de eliminar el dato?</h4>
+                <p>Los datos se perderán de manera definitiva</p>
+                <form action="" id="del_data" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="id_data">
+                    <div class="row pt-3">
+                        <div class="col-sm-12">
+                            <button type="button" class="btn btn-secondary rounded-0" data-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-primary rounded-0">Eliminar</button>
+                        </div>
+                    </div>                    
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
